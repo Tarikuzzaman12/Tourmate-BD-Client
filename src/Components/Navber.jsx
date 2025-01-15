@@ -15,7 +15,7 @@ const Navber = () => {
             <li><Link to="/community">Community</Link></li>
             <li><Link to="/trips">Trips</Link></li>
             <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/login">Login/Register</Link></li>
+            <li><Link to="/login">Login</Link></li>
         </>
     );
 
