@@ -1,9 +1,11 @@
 import React from 'react';
-
+import Slider from '../Components/Slider'
+import OverView from '../Components/OverView';
 const Home = () => {
     return (
         <div>
-            home
+           <Slider></Slider>
+           <OverView></OverView>
         </div>
     );
 };
