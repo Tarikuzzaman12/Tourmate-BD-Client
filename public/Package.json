@@ -1,0 +1,73 @@
+[
+    {
+      "id": "1",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Adventure",
+      "tripTitle": "Explore the Sundarbans",
+      "price": 8000
+    },
+    {
+      "id": "2",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Beach",
+      "tripTitle": "Relax at Cox's Bazar",
+      "price": 12000
+    },
+    {
+      "id": "3",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Nature",
+      "tripTitle": "Tea Gardens of Sylhet",
+      "price": 9000
+    },
+    {
+      "id": "4",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Island",
+      "tripTitle": "Saint Martin's Island Tour",
+      "price": 15000
+    },
+    {
+      "id": "5",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Cultural",
+      "tripTitle": "Discover Rangamati",
+      "price": 10000
+    },
+    {
+      "id": "6",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Adventure",
+      "tripTitle": "Hills of Bandarban",
+      "price": 11000
+    },
+    {
+      "id": "7",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Beach",
+      "tripTitle": "Sunset at Kuakata",
+      "price": 9500
+    },
+    {
+      "id": "8",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Nature",
+      "tripTitle": "Madhabkunda Waterfall",
+      "price": 8500
+    },
+    {
+      "id": "9",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Historical",
+      "tripTitle": "Visit Historic Sonargaon",
+      "price": 7000
+    },
+    {
+      "id": "10",
+      "photo": "https://i.ibb.co.com/4szZ8WC/Sundorban.jpg",
+      "tourType": "Archaeological",
+      "tripTitle": "Explore Paharpur Monastery",
+      "price": 9500
+    }
+  ]
+  
