@@ -1,10 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { AuthContext } from './Provider/AuthProvider'; // Assuming an AuthProvider for authentication
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Gallery from './Gallery';
+import AboutTour from './AboutTour';
+import TourPlan from './Tourplan';
 
 const PkgDetails = () => {
     const { id } = useParams();
@@ -76,7 +79,7 @@ const PkgDetails = () => {
         <div className="container mx-auto my-8 p-4 space-y-8">
             <ToastContainer position="top-center" autoClose={3000} />
             {/* Gallery Section */}
-            <div className="gallery-section">
+            {/* <div className="gallery-section">
                 <h2 className="text-2xl font-bold mb-4">Gallery</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {packageDetails.photos && packageDetails.photos.length > 0 ? (
@@ -92,16 +95,18 @@ const PkgDetails = () => {
                         <p>No photos available.</p>
                     )}
                 </div>
-            </div>
+            </div> */}
+            <Gallery></Gallery>
 
             {/* About the Tour Section */}
-            <div className="about-tour-section">
+            {/* <div className="about-tour-section">
                 <h2 className="text-2xl font-bold mb-4">About The Tour</h2>
                 <p className="text-lg text-gray-700">{packageDetails.description}</p>
-            </div>
+            </div> */}
+            <AboutTour></AboutTour>
 
             {/* Tour Plan Section */}
-            <div className="tour-plan-section">
+            {/* <div className="tour-plan-section">
                 <h2 className="text-2xl font-bold mb-4">Tour Plan</h2>
                 <ul className="list-disc pl-6 text-gray-700">
                     {packageDetails.tourPlan && packageDetails.tourPlan.length > 0 ? (
@@ -114,7 +119,8 @@ const PkgDetails = () => {
                         <p>No tour plan available.</p>
                     )}
                 </ul>
-            </div>
+            </div> */}
+            <TourPlan></TourPlan>
 
             {/* Tour Guides Section */}
             <div className="tour-guides-section">
@@ -122,7 +128,7 @@ const PkgDetails = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {guides && guides.length > 0 ? (
                         guides.map((guide) => (
-                            <div
+                            <Link to={`/guides/${guide._id}`}
                                 key={guide.id}
                                 className="card card-compact bg-base-100 w-96 shadow-xl"
                             >
@@ -140,7 +146,7 @@ const PkgDetails = () => {
                                         Specialty: {guide.specialty}
                                     </p>
                                 </div>
-                            </div>
+                            </Link>
                         ))
                     ) : (
                         <p>No guides available.</p>
