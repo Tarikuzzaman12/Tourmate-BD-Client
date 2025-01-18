@@ -1,0 +1,101 @@
+[
+    {
+        "serial": 1,
+        "storyTitle": "A Night by the Campfire",
+        "description": "Spending the night by a campfire, telling stories and enjoying the warmth of the flames. A perfect end to the day.",
+        "author": "Anna Lee",
+        "createdAt": "2024-09-10",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Adventure",
+        "tripTitle": "Explore the Sundarbans",
+        "price": 8000
+    },
+    {
+        "serial": 2,
+        "storyTitle": "Relaxing at the Beach",
+        "description": "Waves crashing on the shore, a gentle breeze, and the golden sunset at the beach. A peaceful retreat from daily life.",
+        "author": "John Doe",
+        "createdAt": "2024-09-12",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Beach",
+        "tripTitle": "Relax at Cox's Bazar",
+        "price": 12000
+    },
+    {
+        "serial": 3,
+        "storyTitle": "Trekking through the Hills",
+        "description": "Embarking on a thrilling trek through hills, with breathtaking views and the thrill of the journey keeping you energized.",
+        "author": "Emma Watson",
+        "createdAt": "2024-09-14",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Nature",
+        "tripTitle": "Tea Gardens of Sylhet",
+        "price": 9000
+    },
+    {
+        "serial": 4,
+        "storyTitle": "Island Paradise",
+        "description": "A perfect getaway on Saint Martin's Island, surrounded by crystal-clear waters and white sandy beaches.",
+        "author": "David Smith",
+        "createdAt": "2024-09-16",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Island",
+        "tripTitle": "Saint Martin's Island Tour",
+        "price": 15000
+    },
+    {
+        "serial": 5,
+        "storyTitle": "Discovering Culture",
+        "description": "Exploring the rich cultural heritage of Rangamati, where traditions blend with the natural beauty of the hills and lakes.",
+        "author": "Sophia Turner",
+        "createdAt": "2024-09-18",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Cultural",
+        "tripTitle": "Discover Rangamati",
+        "price": 10000
+    },
+    {
+        "serial": 6,
+        "storyTitle": "Adventure in the Hills",
+        "description": "Challenging yet rewarding, the hills of Bandarban offer the perfect adventure with nature at its finest.",
+        "author": "Oliver Brown",
+        "createdAt": "2024-09-20",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Adventure",
+        "tripTitle": "Hills of Bandarban",
+        "price": 11000
+    },
+    {
+        "serial": 7,
+        "storyTitle": "Sunset at the Beach",
+        "description": "A serene evening spent watching the sunset at Kuakata Beach, where the horizon blends beautifully with the ocean.",
+        "author": "Lily James",
+        "createdAt": "2024-09-22",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Beach",
+        "tripTitle": "Sunset at Kuakata",
+        "price": 9500
+    },
+    {
+        "serial": 8,
+        "storyTitle": "Waterfall Wonders",
+        "description": "The tranquil beauty of Madhabkunda Waterfall, with cascading water surrounded by lush greenery, is a perfect escape from the hustle.",
+        "author": "James Lee",
+        "createdAt": "2024-09-24",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Nature",
+        "tripTitle": "Madhabkunda Waterfall",
+        "price": 8500
+    },
+    {
+        "serial": 9,
+        "storyTitle": "Historical Journey",
+        "description": "A historical journey to the ancient city of Sonargaon, where ruins tell the stories of a bygone era.",
+        "author": "Charlotte Harris",
+        "createdAt": "2024-09-26",
+        "image": "https://i.ibb.co/4szZ8WC/Sundorban.jpg",
+        "tourType": "Historical",
+        "tripTitle": "Visit Historic Sonargaon",
+        "price": 7000
+    }
+]
