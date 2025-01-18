@@ -16,6 +16,7 @@ import PkgDetails from './Components/PkgDetails.jsx';
 import AuthProvider from './Components/Provider/AuthProvider.jsx';
 import { ToastContainer } from 'react-toastify';
 import Register from './pages/Register.jsx';
+import GuideDetails from './Components/GuideDetails.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/packages/:id",
         element: <PkgDetails></PkgDetails>,
+      },
+      {
+        path: "/guides/:id",
+        element: <GuideDetails></GuideDetails>,
       },
       {
         path: "community",

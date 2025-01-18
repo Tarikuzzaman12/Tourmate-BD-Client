@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const GuideCard = ({guide}) => {
     return (
@@ -13,7 +14,7 @@ const GuideCard = ({guide}) => {
       <p className="text-gray-500">Experience: {guide.experience}</p>
       <p className="text-gray-700">Specialty: {guide.specialty}</p> 
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">Details</button>
+      <Link to={`/guides/${guide._id}`} className="btn btn-primary">Details</Link>
     </div>
   </div>
 </div>
