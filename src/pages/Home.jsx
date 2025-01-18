@@ -3,6 +3,8 @@ import Slider from '../Components/Slider'
 import OverView from '../Components/OverView';
 import TourismGuide from '../Components/TourismGuide';
 import RandomStories from '../Components/RandomStories';
+import TopDes from '../Components/TopDes';
+import TourTip from '../Components/TourTip';
 const Home = () => {
     return (
         <div>
@@ -10,6 +12,8 @@ const Home = () => {
            <OverView></OverView>
            <TourismGuide></TourismGuide>
            <RandomStories></RandomStories>
+           <TopDes></TopDes>
+           <TourTip></TourTip>
         </div>
     );
 };
