@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'; // Import icons from react-icons
-
+import img from '../assets/images/Footer.png'
 const Footer = () => {
   const currentYear = new Date().getFullYear(); // Get the current year
 
@@ -9,8 +9,8 @@ const Footer = () => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="flex items-center space-x-4">
-          <img src="your-logo-url.png" alt="TourMate BD Logo" className="h-10" />
-          <span className="text-lg font-semibold">TourMate BD</span>
+          <img src={img} alt="TourMate BD Logo" className="h-40" />
+          <span className="text-3xl font-semibold">TourMate BD</span>
         </div>
         
         {/* Social Media Links */}

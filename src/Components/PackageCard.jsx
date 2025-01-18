@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PackageCard = ({ pkg }) => {
     return (
@@ -14,7 +15,7 @@ const PackageCard = ({ pkg }) => {
                 <p className='text-xl'>$ {pkg.price}</p>
 
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Details</button>
+                    <Link to={`/packages/${pkg._id}`} className="btn btn-primary">Details</Link>
                 </div>
             </div>
         </div>

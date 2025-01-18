@@ -22,7 +22,7 @@ const Slider = () => {
     return (
         <div className="relative">
             {/* Slider Section */}
-            <div className="carousel w-full mt-5">
+            <div className="carousel w-full">
                 {images.map((src, index) => (
                     <div
                         key={index}
