@@ -1,22 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "./Provider/AuthProvider"; // Ensure AuthProvider is correctly set up
 import { FacebookShareButton, FacebookIcon } from "react-share";
+import { AuthContext } from "../Components/Provider/AuthProvider";
 
-const RandomStories = () => {
+const Stories = () => {
   const { user } = useContext(AuthContext); // Get the authenticated user
   const [stories, setStories] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch 4 random stories from the server
-    fetch("http://localhost:5000/stories/random")
+    // Fetch all stories from the server
+    fetch("http://localhost:5000/stories")
       .then((res) => res.json())
-      .then((data) => {
-        // Shuffle and select 4 random stories
-        const shuffled = data.sort(() => 0.5 - Math.random());
-        setStories(shuffled.slice(0, 4));
-      })
+      .then((data) => setStories(data))
       .catch((err) => console.error("Error fetching stories:", err));
   }, []);
 
@@ -29,7 +25,7 @@ const RandomStories = () => {
 
   return (
     <div className="container mx-auto my-8 p-4">
-      <h2 className="text-2xl font-bold mb-4">Random Stories</h2>
+      <h2 className="text-2xl text-center mb-10 font-bold">All  Stories</h2>
 
       {/* Display 4 random stories */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -59,17 +55,9 @@ const RandomStories = () => {
         ))}
       </div>
 
-      {/* Navigation buttons */}
-      <div className="flex justify-between mt-6">
-        <Link to="/stories">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">All Stories</button>
-        </Link>
-        <Link to="/stories">
-          <button className="bg-green-600 text-white px-4 py-2 rounded">Add Story</button>
-        </Link>
-      </div>
+   
     </div>
   );
 };
 
-export default RandomStories;
+export default Stories;
