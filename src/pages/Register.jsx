@@ -13,45 +13,125 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  // const handleRegister = async (e) => {
+  //   e.preventDefault();
+  //   const name = e.target.name.value;
+  //   const email = e.target.email.value;
+  //   const password = e.target.password.value;
+  //   const photo = e.target.photo.value;
+
+  //   if (!/(?=.*[A-Z])/.test(password)) {
+  //     setPasswordError("Password must contain at least one uppercase letter.");
+  //     return;
+  //   }
+  //   if (password.length < 6) {
+  //     setPasswordError("Password must be at least 6 characters long.");
+  //     return;
+  //   }
+  //   setPasswordError("");
+
+  //   try {
+  //     const res = await createNewUser(email, password);
+  //     await updateUserProfile(name, photo);
+
+  //     setUser({ ...res.user, displayName: name, photoURL: photo });
+  //     toast.success("Registration successful!");
+  //     navigate("/");
+  //   } catch (error) {
+  //     toast.error(`Registration failed: ${error.message}`);
+  //   }
+  // };
   const handleRegister = async (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const photo = e.target.photo.value;
+  e.preventDefault();
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  const photo = e.target.photo.value;
 
-    if (!/(?=.*[A-Z])/.test(password)) {
-      setPasswordError("Password must contain at least one uppercase letter.");
-      return;
-    }
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long.");
-      return;
-    }
-    setPasswordError("");
+  if (!/(?=.*[A-Z])/.test(password)) {
+    setPasswordError("Password must contain at least one uppercase letter.");
+    return;
+  }
+  if (password.length < 6) {
+    setPasswordError("Password must be at least 6 characters long.");
+    return;
+  }
+  setPasswordError("");
 
-    try {
-      const res = await createNewUser(email, password);
-      await updateUserProfile(name, photo);
+  try {
+    const res = await createNewUser(email, password);
+    await updateUserProfile(name, photo);
 
-      setUser({ ...res.user, displayName: name, photoURL: photo });
+    const newUser = {
+      name,
+      email,
+      photo,
+      role: "user", // Default role
+    };
+
+    // Send user data to the server
+    const response = await fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
+    });
+
+    if (response.ok) {
       toast.success("Registration successful!");
       navigate("/");
-    } catch (error) {
-      toast.error(`Registration failed: ${error.message}`);
+    } else {
+      const errorData = await response.json();
+      toast.error(`Failed to save user data: ${errorData.error}`);
     }
-  };
+  } catch (error) {
+    toast.error(`Registration failed: ${error.message}`);
+  }
+};
 
+
+  // const handleGoogleSignIn = async () => {
+  //   try {
+  //     const res = await googleSignIn();
+  //     setUser(res.user);
+  //     toast.success("Logged in with Google!");
+  //     navigate("/");
+  //   } catch (error) {
+  //     toast.error(`Google Sign-In failed: ${error.message}`);
+  //   }
+  // };
   const handleGoogleSignIn = async () => {
     try {
-      const res = await googleSignIn();
-      setUser(res.user);
-      toast.success("Logged in with Google!");
-      navigate("/");
+      const res = await googleSignIn(); // Firebase Authentication
+      const user = res.user;
+  
+      // User data backend-e pathano
+      const newUser = {
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+        role: "user", // Default role set
+      };
+  
+      const response = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+  
+      if (response.ok) {
+        toast.success("User registered successfully!");
+        setUser(user);
+        navigate("/"); // Redirect after successful sign-in
+      } else {
+        toast.error("Failed to save user data.");
+      }
     } catch (error) {
       toast.error(`Google Sign-In failed: ${error.message}`);
     }
   };
+  
 
   return (
     <div>

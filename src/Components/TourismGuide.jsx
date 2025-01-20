@@ -12,7 +12,7 @@ const TourismGuide = () => {
 
   // Fetch random packages
   useEffect(() => {
-    fetch('http://localhost:5000/packages')
+    fetch('http://localhost:5000/packages/random')
       .then(res => res.json())
       .then(data => setPackages(data));
   }, []);
