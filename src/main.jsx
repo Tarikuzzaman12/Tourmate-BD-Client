@@ -18,6 +18,9 @@ import { ToastContainer } from 'react-toastify';
 import Register from './pages/Register.jsx';
 import GuideDetails from './Components/GuideDetails.jsx';
 import Stories from './pages/Stories.jsx';
+import AdminDashboard from './Dashboard/AdminDashboard.jsx';
+import UserDashboard from './Dashboard/UserDashboard.jsx';
+import GuideDashboard from './Dashboard/GuideDashboard.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +57,18 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path:"/dashboard/admin",
+        element:<AdminDashboard></AdminDashboard>
+      },
+      {
+        path:"/dashboard/user",
+        element:<UserDashboard></UserDashboard>
+      },
+      {
+        path:"/dashboard/guide",
+        element:<GuideDashboard></GuideDashboard>
       },
       {
         path: "/register",
