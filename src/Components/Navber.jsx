@@ -3,13 +3,15 @@ import { FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./Provider/AuthProvider";
 import img from "../assets/images/navber.png";
+import AdminDashboard from "../Dashboard/AdminDashboard";
+import UserDashboard from "../Dashboard/UserDashboard";
+import GuideDashboard from "../Dashboard/GuideDashboard";
 
 const Navbar = () => {
-  const { user, signOutUser } = useContext(AuthContext); // Fetch user and logout function from context
+  const { user,userData, signOutUser } = useContext(AuthContext); // Fetch user and logout function from context
   const [role, setRole] = useState(null); // State to store the user's role
   const [dropdownVisible, setDropdownVisible] = useState(false); // State to manage dropdown visibility
-  const navigate = useNavigate(); // React Router's navigation hook
-
+  const navigate = useNavigate(); // React Router's navigation 
   // Fetch user role from the server
   useEffect(() => {
     const fetchUserRole = async () => {
@@ -31,12 +33,14 @@ const Navbar = () => {
 
   // Navigate to the appropriate dashboard
   const navigateToDashboard = () => {
-    if (role === "admin") {
+    if (userData?.role === "admin") {
       navigate("/dashboard/admin");
-    } else if (role === "user") {
+    } else if (userData?.role === "user") {
       navigate("/dashboard/user");
-    } else {
+    } else if (userData?.role === "guide") {
       navigate("/dashboard/guide");
+    } else {
+      toast.error("Invalid role");
     }
   };
 
@@ -127,7 +131,7 @@ const Navbar = () => {
                 <hr className="my-2" />
                 {/* Dashboard Navigation */}
                 <button
-                  onClick={navigateToDashboard}
+                  onClick={ navigateToDashboard }
                   className="block w-full text-left text-blue-500 hover:underline"
                 >
                   Dashboard

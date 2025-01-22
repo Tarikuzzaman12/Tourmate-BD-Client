@@ -34,7 +34,7 @@ const RandomStories = () => {
       {/* Display 4 random stories */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {stories.map((story) => (
-          <div key={story.id} className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+          <div key={story._id} className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
             <img className="w-72 h-72 rounded-full" src={story.image} alt={story.storyTitle} />
             <div className="px-6 py-4">
               <h2 className="font-bold text-xl mb-2">{story.storyTitle}</h2>

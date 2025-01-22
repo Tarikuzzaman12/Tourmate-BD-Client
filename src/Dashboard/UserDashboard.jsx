@@ -1,9 +1,10 @@
 import React from 'react';
+import DashboardLayout from '../Components/DashboardLayout';
 
 const UserDashboard = () => {
     return (
         <div>
-            user
+           <DashboardLayout></DashboardLayout>
         </div>
     );
 };

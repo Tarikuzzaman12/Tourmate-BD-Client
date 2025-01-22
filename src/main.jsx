@@ -15,12 +15,16 @@ import Login from './pages/Login.jsx';
 import PkgDetails from './Components/PkgDetails.jsx';
 import AuthProvider from './Components/Provider/AuthProvider.jsx';
 import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import Register from './pages/Register.jsx';
 import GuideDetails from './Components/GuideDetails.jsx';
 import Stories from './pages/Stories.jsx';
 import AdminDashboard from './Dashboard/AdminDashboard.jsx';
 import UserDashboard from './Dashboard/UserDashboard.jsx';
 import GuideDashboard from './Dashboard/GuideDashboard.jsx';
+import ManageProfile from './UserDashboardComponents/ManageProfile.jsx';
+import JoinGuide from './UserDashboardComponents/JoinGuide.jsx';
+import ProtectedRoute from './routes/ProtectedRoutes.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,15 +64,25 @@ const router = createBrowserRouter([
       },
       {
         path:"/dashboard/admin",
-        element:<AdminDashboard></AdminDashboard>
+        element:<ProtectedRoute role="admin"><AdminDashboard ></AdminDashboard></ProtectedRoute>
       },
       {
         path:"/dashboard/user",
-        element:<UserDashboard></UserDashboard>
+        element:<ProtectedRoute role="user"><UserDashboard></UserDashboard></ProtectedRoute>,
+        children: [
+          {
+            path: "manage-profile",
+            element:<ManageProfile></ManageProfile>,
+          },
+          {
+            path: "join-guide",
+            element:<JoinGuide></JoinGuide>,
+          },
+        ]
       },
       {
         path:"/dashboard/guide",
-        element:<GuideDashboard></GuideDashboard>
+        element:<ProtectedRoute role="guide"><GuideDashboard></GuideDashboard></ProtectedRoute>
       },
       {
         path: "/register",
