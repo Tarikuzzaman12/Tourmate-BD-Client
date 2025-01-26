@@ -3,9 +3,9 @@ import { Outlet, NavLink } from "react-router-dom";
 const DashboardLayout = () => {
   const navItems = [
     { name: "Manage Profile", path: "/dashboard/user/manage-profile" },
-    { name: "My Bookings", path: "/dashboard/my-bookings" },
-    { name: "Add Stories", path: "/dashboard/add-stories" },
-    { name: "Manage Stories", path: "/dashboard/manage-stories" },
+    { name: "My Bookings", path: "/dashboard/user/my-bookings" },
+    { name: "Add Stories", path: "/dashboard/user/add-story" },
+    { name: "Manage Stories", path: "/dashboard/user/manage-stories" },
     { name: "Join as Tour Guide", path: "/dashboard/user/join-guide" },
   ];
 

@@ -25,6 +25,9 @@ import GuideDashboard from './Dashboard/GuideDashboard.jsx';
 import ManageProfile from './UserDashboardComponents/ManageProfile.jsx';
 import JoinGuide from './UserDashboardComponents/JoinGuide.jsx';
 import ProtectedRoute from './routes/ProtectedRoutes.jsx';
+import Booking from './UserDashboardComponents/Booking.jsx';
+import AddStory from './UserDashboardComponents/AddStory.jsx';
+import ManageStory from './UserDashboardComponents/ManageStory.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -77,6 +80,18 @@ const router = createBrowserRouter([
           {
             path: "join-guide",
             element:<JoinGuide></JoinGuide>,
+          },
+          {
+            path: "my-bookings",
+            element:<Booking></Booking>,
+          },
+          {
+            path: "add-story",
+            element:<AddStory></AddStory>,
+          },
+          {
+            path: "manage-stories",
+            element:<ManageStory></ManageStory>,
           },
         ]
       },
