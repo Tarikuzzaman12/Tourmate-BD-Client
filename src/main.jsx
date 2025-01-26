@@ -28,6 +28,12 @@ import ProtectedRoute from './routes/ProtectedRoutes.jsx';
 import Booking from './UserDashboardComponents/Booking.jsx';
 import AddStory from './UserDashboardComponents/AddStory.jsx';
 import ManageStory from './UserDashboardComponents/ManageStory.jsx';
+import Payment from './UserDashboardComponents/Payment.jsx';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe("your-publishable-key-here"); // Replace with your actual key
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -93,6 +99,7 @@ const router = createBrowserRouter([
             path: "manage-stories",
             element:<ManageStory></ManageStory>,
           },
+        
         ]
       },
       {
@@ -102,6 +109,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/payment/:id",
+        element: (
+          <Elements stripe={stripePromise}>
+            <Payment />
+          </Elements>
+        ),
       },
     ],
   },
@@ -124,5 +139,5 @@ createRoot(document.getElementById('root')).render(
       />
    <RouterProvider router={router} />
    </AuthProvider>
-    </StrictMode>,
-)
+  </StrictMode>
+);
