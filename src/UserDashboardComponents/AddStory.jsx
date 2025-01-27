@@ -1,62 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../Components/Provider/AuthProvider';
+import axios from 'axios';
 
 const AddStory = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [images, setImages] = useState([]);
-  const [authorName, setAuthorName] = useState('');  // New state for author's name
-  const [date, setDate] = useState('');  // New state for date
+  const { user } = useContext(AuthContext);
+  const [imageLink, setImageLink] = useState(''); // Store image URL
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Assuming you fetch the author's name (e.g., from localStorage or an auth service)
-    const name = localStorage.getItem('userName') || 'Guest';  // Example logic to get user name
-    setAuthorName(name);
+    if (!user) {
+      toast.error('Please log in to add a story!');
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
-    // Set the current date when the component loads
-    const currentDate = new Date().toLocaleDateString();
-    setDate(currentDate);
-  }, []);
-
-  const handleImageUpload = (e) => {
-    const files = Array.from(e.target.files);
-    setImages(files);
+  const handleImageLinkChange = (e) => {
+    const url = e.target.value;
+    setImageLink(url);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !description || images.length === 0) {
-      toast.error('Please fill all fields and upload at least one image');
+    const form = e.target;
+    const title = form.title.value;
+    const description = form.description.value;
+
+    const currentDate = new Date().toLocaleDateString();
+
+    if (!imageLink || !imageLink.startsWith('http')) {
+      toast.error('Please provide a valid image URL!');
       return;
     }
 
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('authorName', authorName);  // Add author's name to the form data
-    formData.append('date', date);  // Add the current date to the form data
-    images.forEach((image) => formData.append('images', image));
+    const formData = {
+      title,
+      description,
+      image: imageLink, // Use the provided image URL
+      authorName: user?.displayName || 'Unknown',
+      email: user?.email || 'No email provided',
+      date: currentDate,
+    };
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/stories', {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await axios.post('http://localhost:5000/stories', formData);
 
-      const data = await response.json();
-
-      if (data.success) {
+      if (response.data) {
         toast.success('Story added successfully!');
-        navigate('/dashboard/user/manage-stories'); // Redirect to manage stories page
+        navigate('/dashboard/user/manage-stories');
       } else {
-        throw new Error(data.message || 'Failed to add story');
+        throw new Error(response.data.message || 'Failed to add story');
       }
     } catch (error) {
-      console.error(error);
+      console.error('Error occurred:', error);
       toast.error(error.message || 'An error occurred while adding the story');
     } finally {
       setLoading(false);
@@ -64,54 +63,46 @@ const AddStory = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Add a New Story</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <label htmlFor="title" className="block text-sm font-medium">Title</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label htmlFor="description" className="block text-sm font-medium">Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-2 border rounded"
-            rows="4"
-            required
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label htmlFor="images" className="block text-sm font-medium">Upload Images</label>
-          <input
-            type="file"
-            id="images"
-            onChange={handleImageUpload}
-            multiple
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          className={`w-full bg-blue-500 text-white py-2 px-4 rounded ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}`}
-          disabled={loading}
-        >
-          {loading ? 'Submitting...' : 'Add Story'}
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="max-w-3xl mx-auto p-6 space-y-4">
+      <div>
+        <label htmlFor="title" className="block text-sm font-medium">Title:</label>
+        <input
+          type="text"
+          name="title"
+          required
+          className="input input-bordered w-full mt-2"
+          placeholder="Enter story title"
+        />
+      </div>
+      <div>
+        <label htmlFor="description" className="block text-sm font-medium">Description:</label>
+        <textarea
+          name="description"
+          required
+          className="textarea textarea-bordered w-full mt-2"
+          rows="4"
+          placeholder="Enter story description"
+        />
+      </div>
+      <div>
+        <label htmlFor="image" className="block text-sm font-medium">Image URL:</label>
+        <input
+          type="url"
+          name="image"
+          placeholder="Enter image URL"
+          value={imageLink}
+          onChange={handleImageLinkChange}
+          className="input input-bordered w-full mt-2"
+        />
+      </div>
+      <button
+        type="submit"
+        className={`btn text-white btn-primary w-full ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        disabled={loading}
+      >
+        {loading ? 'Submitting...' : 'Add Story'}
+      </button>
+    </form>
   );
 };
 

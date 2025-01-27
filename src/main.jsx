@@ -31,6 +31,7 @@ import ManageStory from './UserDashboardComponents/ManageStory.jsx';
 import Payment from './UserDashboardComponents/Payment.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const stripePromise = loadStripe("your-publishable-key-here"); // Replace with your actual key
 
@@ -122,8 +123,12 @@ const router = createBrowserRouter([
   },
 ]);
 
+
+const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <QueryClientProvider client={queryClient}>
+
    <AuthProvider>
    <ToastContainer
         position="top-center"
@@ -139,5 +144,6 @@ createRoot(document.getElementById('root')).render(
       />
    <RouterProvider router={router} />
    </AuthProvider>
+   </QueryClientProvider>
   </StrictMode>
 );

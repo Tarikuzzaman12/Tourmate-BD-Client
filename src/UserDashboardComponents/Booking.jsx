@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { AuthContext } from "../Components/Provider/AuthProvider"; // Assuming AuthProvider provides user info
-import { useNavigate } from "react-router-dom"; // To redirect to payment page
-import { toast } from "react-toastify";
-import Swal from "sweetalert2"; // Import SweetAlert2
+import { AuthContext } from "../Components/Provider/AuthProvider"; // AuthProvider with user info
+import { useNavigate } from "react-router-dom"; // To handle navigation
+import Swal from "sweetalert2"; // SweetAlert2 for alerts
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
@@ -12,19 +11,28 @@ const MyBookings = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user?.email) {
-      setLoading(true);
-      fetch(`http://localhost:5000/bookings?email=${user.email}`)
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("Failed to fetch bookings");
-          }
-          return res.json();
-        })
-        .then((data) => setBookings(data.bookings || []))
-        .catch((err) => setError(err.message))
-        .finally(() => setLoading(false));
-    }
+    // Fetch all bookings
+    setLoading(true);
+    fetch(`http://localhost:5000/bookings`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch bookings");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        // Apply filter based on logged-in user email
+        const userBookings = data.bookings.filter(
+          (booking) => booking.
+          touristEmail === user?.email
+        );
+        setBookings(userBookings || []);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("Could not load your bookings. Please try again later.");
+      })
+      .finally(() => setLoading(false));
   }, [user]);
 
   const handleCancelBooking = (id) => {
@@ -63,6 +71,11 @@ const MyBookings = () => {
     navigate(`/payment/${id}`);
   };
 
+ 
+  if (!user) {
+    return <div className="text-red-500">You need to log in to view your bookings.</div>;
+  }
+
   if (loading) {
     return <div>Loading your bookings...</div>;
   }
@@ -73,9 +86,9 @@ const MyBookings = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">My Bookings</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">My Bookings</h1>
       {bookings.length === 0 ? (
-        <p>No bookings found.</p>
+        <p>No bookings found .</p>
       ) : (
         <table className="table-auto w-full border border-gray-300">
           <thead>
