@@ -1,9 +1,10 @@
 import React from 'react';
+import AdminDashboardLayout from '../Components/AdminDashboardLayout';
 
 const AdminDashboard = () => {
     return (
         <div>
-            admin
+          <AdminDashboardLayout></AdminDashboardLayout>
         </div>
     );
 };

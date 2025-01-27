@@ -36,6 +36,8 @@ import GManageProfile from './GuideDashboardComponents/GManageProfile.jsx';
 import GAddStory from './GuideDashboardComponents/GAddStory.jsx';
 import GManageStory from './GuideDashboardComponents/GManageStory.jsx';
 import AssignedTour from './GuideDashboardComponents/AssignedTour.jsx';
+import AManageProfile from './AdminDashboardComponents/AManageProfile.jsx';
+import AddPackage from './AdminDashboardComponents/AddPackage.jsx';
 
 const stripePromise = loadStripe("your-publishable-key-here"); // Replace with your actual key
 
@@ -78,7 +80,26 @@ const router = createBrowserRouter([
       },
       {
         path:"/dashboard/admin",
-        element:<ProtectedRoute role="admin"><AdminDashboard ></AdminDashboard></ProtectedRoute>
+        element:<ProtectedRoute role="admin"><AdminDashboard ></AdminDashboard></ProtectedRoute>,
+        children: [
+          {
+            path: "manage-profile",
+            element:<AManageProfile></AManageProfile>,
+          },
+          {
+            path: "add-package",
+            element:<AddPackage></AddPackage>,
+          },
+          {
+            path: "my-bookings",
+            element:<Booking></Booking>,
+          },
+          {
+            path: "add-story",
+            element:<AddStory></AddStory>,
+          },
+        
+        ]
       },
       {
         path:"/dashboard/user",
