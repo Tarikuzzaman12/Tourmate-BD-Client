@@ -32,6 +32,10 @@ import Payment from './UserDashboardComponents/Payment.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import GManageProfile from './GuideDashboardComponents/GManageProfile.jsx';
+import GAddStory from './GuideDashboardComponents/GAddStory.jsx';
+import GManageStory from './GuideDashboardComponents/GManageStory.jsx';
+import AssignedTour from './GuideDashboardComponents/AssignedTour.jsx';
 
 const stripePromise = loadStripe("your-publishable-key-here"); // Replace with your actual key
 
@@ -105,7 +109,26 @@ const router = createBrowserRouter([
       },
       {
         path:"/dashboard/guide",
-        element:<ProtectedRoute role="guide"><GuideDashboard></GuideDashboard></ProtectedRoute>
+        element:<ProtectedRoute role="guide"><GuideDashboard></GuideDashboard></ProtectedRoute>,
+        children: [
+          {
+            path: "manage-profile",
+            element:<GManageProfile></GManageProfile>,
+          },
+          {
+            path: "my-assinged",
+            element:<AssignedTour></AssignedTour>,
+          },
+          {
+            path: "add-story",
+            element:<GAddStory></GAddStory>,
+          },
+          {
+            path: "manage-stories",
+            element:<GManageStory></GManageStory>,
+          },
+        
+        ]
       },
       {
         path: "/register",
