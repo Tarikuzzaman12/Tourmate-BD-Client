@@ -139,7 +139,7 @@ const router = createBrowserRouter([
             element:<GManageProfile></GManageProfile>,
           },
           {
-            path: "my-assinged",
+            path: "my-assigned",
             element:<AssignedTour></AssignedTour>,
           },
           {

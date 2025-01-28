@@ -21,10 +21,8 @@ const MyBookings = () => {
         return res.json();
       })
       .then((data) => {
-        // Apply filter based on logged-in user email
         const userBookings = data.bookings.filter(
-          (booking) => booking.
-          touristEmail === user?.email
+          (booking) => booking.touristEmail === user?.email
         );
         setBookings(userBookings || []);
       })
@@ -71,66 +69,67 @@ const MyBookings = () => {
     navigate(`/payment/${id}`);
   };
 
- 
   if (!user) {
-    return <div className="text-red-500">You need to log in to view your bookings.</div>;
+    return <div className="text-red-500 text-center">You need to log in to view your bookings.</div>;
   }
 
   if (loading) {
-    return <div>Loading your bookings...</div>;
+    return <div className="text-center">Loading your bookings...</div>;
   }
 
   if (error) {
-    return <div className="text-red-500">{error}</div>;
+    return <div className="text-red-500 text-center">{error}</div>;
   }
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4 text-center">My Bookings</h1>
+    <div className="p-4 md:p-8">
+      <h1 className="text-2xl font-bold mb-6 text-center">My Bookings</h1>
       {bookings.length === 0 ? (
-        <p>No bookings found .</p>
+        <p className="text-center text-gray-600">No bookings found.</p>
       ) : (
-        <table className="table-auto w-full border border-gray-300">
-          <thead>
-            <tr>
-              <th className="border px-4 py-2">Package Name</th>
-              <th className="border px-4 py-2">Tour Guide</th>
-              <th className="border px-4 py-2">Tour Date</th>
-              <th className="border px-4 py-2">Price</th>
-              <th className="border px-4 py-2">Status</th>
-              <th className="border px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bookings.map((booking) => (
-              <tr key={booking._id}>
-                <td className="border px-4 py-2">{booking.packageName}</td>
-                <td className="border px-4 py-2">{booking.guideName}</td>
-                <td className="border px-4 py-2">{booking.tourDate}</td>
-                <td className="border px-4 py-2">${booking.price}</td>
-                <td className="border px-4 py-2">{booking.status}</td>
-                <td className="border px-4 py-2">
-                  {booking.status === "Pending" && (
-                    <>
-                      <button
-                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                        onClick={() => handlePay(booking._id)}
-                      >
-                        Pay
-                      </button>
-                      <button
-                        className="bg-red-500 text-white px-4 py-2 rounded ml-2 hover:bg-red-600"
-                        onClick={() => handleCancelBooking(booking._id)}
-                      >
-                        Cancel
-                      </button>
-                    </>
-                  )}
-                </td>
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border border-gray-300">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="border px-4 py-2 text-sm md:text-base">Package Name</th>
+                <th className="border px-4 py-2 text-sm md:text-base">Tour Guide</th>
+                <th className="border px-4 py-2 text-sm md:text-base">Tour Date</th>
+                <th className="border px-4 py-2 text-sm md:text-base">Price</th>
+                <th className="border px-4 py-2 text-sm md:text-base">Status</th>
+                <th className="border px-4 py-2 text-sm md:text-base">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {bookings.map((booking) => (
+                <tr key={booking._id}>
+                  <td className="border px-4 py-2 text-xs md:text-base">{booking.packageName}</td>
+                  <td className="border px-4 py-2 text-xs md:text-base">{booking.guideName}</td>
+                  <td className="border px-4 py-2 text-xs md:text-base">{booking.tourDate}</td>
+                  <td className="border px-4 py-2 text-xs md:text-base">${booking.price}</td>
+                  <td className="border px-4 py-2 text-xs md:text-base">{booking.status}</td>
+                  <td className="border px-4 py-2 flex flex-col md:flex-row gap-2">
+                    {booking.status === "Pending" && (
+                      <>
+                        <button
+                          className="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
+                          onClick={() => handlePay(booking._id)}
+                        >
+                          Pay
+                        </button>
+                        <button
+                          className="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600"
+                          onClick={() => handleCancelBooking(booking._id)}
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

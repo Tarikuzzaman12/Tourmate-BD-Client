@@ -34,7 +34,7 @@ const TourismGuide = () => {
 
         {/* Packages Tab */}
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {packages?.map(pkg => (
               <PackageCard key={pkg._id} pkg={pkg} /> // Use PackageCard here
             ))}
@@ -43,7 +43,7 @@ const TourismGuide = () => {
 
         {/* Guides Tab */}
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {guides.map(guide => (
               <GuideCard key={guide._id} guide={guide} /> // Use GuideCard here
             ))}

@@ -3,14 +3,7 @@ import { Modal } from "./Modal";
 
 const AssignedTours = () => {
   const [assignedTours, setAssignedTours] = useState([
-    {
-      id: 1,
-      packageName: "Beach Paradise",
-      touristName: "John Doe",
-      tourDate: "2025-02-15",
-      tourPrice: 1200,
-      status: "Pending", // Can be "Pending", "In Review", or "Accepted"
-    },
+   
     // Add more tour objects as needed
   ]);
 
