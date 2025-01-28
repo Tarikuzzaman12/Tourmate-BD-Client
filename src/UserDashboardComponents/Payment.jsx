@@ -26,7 +26,7 @@ const Payment = () => {
     setLoading(true);
     try {
       // Fetch the client secret from your server
-      const response = await fetch("http://localhost:5000/create-payment-intent", {
+      const response = await fetch("https://tour-mate-bd-server-site.vercel.app/create-payment-intent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +61,7 @@ const Payment = () => {
         status: paymentIntent.status,
       };
   
-      const updateResponse = await fetch(`http://localhost:5000/bookings/${id}/pay`, {
+      const updateResponse = await fetch(`https://tour-mate-bd-server-site.vercel.app/bookings/${id}/pay`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

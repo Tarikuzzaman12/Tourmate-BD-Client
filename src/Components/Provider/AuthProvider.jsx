@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
   // Fetch user data from backend API
   const fetchUserData = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/users/${email}`);
+      const response = await fetch(`https://tour-mate-bd-server-site.vercel.app/users/${email}`);
       if (!response.ok) throw new Error("Failed to fetch user data");
       const data = await response.json();
       return data;

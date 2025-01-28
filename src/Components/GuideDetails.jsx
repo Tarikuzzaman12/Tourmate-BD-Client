@@ -9,7 +9,7 @@ const GuideDetails = () => {
 
     useEffect(() => {
         // Fetch guide details based on the guideId passed as a prop
-        fetch(`http://localhost:5000/guides/${id}`)
+        fetch(`https://tour-mate-bd-server-site.vercel.app/guides/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setGuideDetails(data);

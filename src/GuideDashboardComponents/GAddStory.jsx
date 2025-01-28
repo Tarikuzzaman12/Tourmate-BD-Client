@@ -46,7 +46,7 @@ const GAddStory = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/stories', formData);
+      const response = await axios.post('https://tour-mate-bd-server-site.vercel.app/stories', formData);
 
       if (response.data) {
         toast.success('Story added successfully!');

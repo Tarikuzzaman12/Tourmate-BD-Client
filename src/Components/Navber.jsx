@@ -17,7 +17,7 @@ const Navbar = () => {
     const fetchUserRole = async () => {
       if (user?.email) {
         try {
-          const response = await fetch(`http://localhost:5000/users/${user.email}`);
+          const response = await fetch(`https://tour-mate-bd-server-site.vercel.app/users/${user.email}`);
           if (!response.ok) {
             throw new Error("Failed to fetch user role");
           }

@@ -20,13 +20,13 @@ const PkgDetails = () => {
 
     useEffect(() => {
         // Fetch package details
-        fetch(`http://localhost:5000/packages/${id}`)
+        fetch(`https://tour-mate-bd-server-site.vercel.app/packages/${id}`)
             .then((res) => res.json())
             .then((data) => setPackageDetails(data))
             .catch((err) => console.error(err));
 
         // Fetch tour guides
-        fetch(`http://localhost:5000/guides`)
+        fetch(`https://tour-mate-bd-server-site.vercel.app/guides`)
             .then((res) => res.json())
             .then((data) => setGuides(data))
             .catch((err) => console.error(err));
@@ -52,7 +52,7 @@ const PkgDetails = () => {
         };
 
         // Save booking info
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://tour-mate-bd-server-site.vercel.app/bookings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(bookingInfo),

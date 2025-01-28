@@ -19,7 +19,7 @@ const GManageProfile = () => {
       const fetchUserData = async () => {
         try {
           setLoading(true); // Start loading
-          const response = await fetch(`http://localhost:5000/users/${user.email}`);
+          const response = await fetch(`https://tour-mate-bd-server-site.vercel.app/users/${user.email}`);
           if (!response.ok) throw new Error("Failed to fetch user data");
           const data = await response.json();
           setUserData(data); // Set fetched data to state
@@ -42,7 +42,7 @@ const GManageProfile = () => {
 
   const handleSaveChanges = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/users/${user.email}`, {
+      const response = await fetch(`https://tour-mate-bd-server-site.vercel.app/users/${user.email}`, {
         method: "PUT", // Update user data
         headers: {
           "Content-Type": "application/json",

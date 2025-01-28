@@ -13,7 +13,7 @@ const MyBookings = () => {
   useEffect(() => {
     // Fetch all bookings
     setLoading(true);
-    fetch(`http://localhost:5000/bookings`)
+    fetch(`https://tour-mate-bd-server-site.vercel.app/bookings`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch bookings");
@@ -46,7 +46,7 @@ const MyBookings = () => {
       confirmButtonText: "Yes, cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://tour-mate-bd-server-site.vercel.app/bookings/${id}`, {
           method: "DELETE",
         })
           .then((res) => {

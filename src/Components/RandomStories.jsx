@@ -10,7 +10,7 @@ const RandomStories = () => {
 
   useEffect(() => {
     // Fetch 4 random stories from the server
-    fetch("http://localhost:5000/stories/random")
+    fetch("https://tour-mate-bd-server-site.vercel.app/stories/random")
       .then((res) => res.json())
       .then((data) => {
         // Shuffle and select 4 random stories
@@ -45,7 +45,7 @@ const RandomStories = () => {
             </div>
             <div className="px-6 py-4 flex justify-between items-center">
               <FacebookShareButton
-                url={`http://localhost:5000/stories/${story.id}`}
+                url={`https://tour-mate-bd-server-site.vercel.app/stories/${story.id}`}
                 quote={`Check out this story: ${story.storyTitle}`}
                 hashtag="#RandomStories"
                 onClick={() => handleShare(story)}

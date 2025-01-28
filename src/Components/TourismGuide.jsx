@@ -12,14 +12,14 @@ const TourismGuide = () => {
 
   // Fetch random packages
   useEffect(() => {
-    fetch('http://localhost:5000/packages/random')
+    fetch('https://tour-mate-bd-server-site.vercel.app/packages/random')
       .then(res => res.json())
       .then(data => setPackages(data));
   }, []);
 
   // Fetch random guides
   useEffect(() => {
-    fetch('http://localhost:5000/guides')
+    fetch('https://tour-mate-bd-server-site.vercel.app/guides')
       .then(res => res.json())
       .then(data => setGuides(data));
   }, []);

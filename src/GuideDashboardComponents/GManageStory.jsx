@@ -11,7 +11,7 @@ const GManageStory = () => {
     if (user?.email) {
       const fetchUserStories = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/stories`);
+          const response = await fetch(`https://tour-mate-bd-server-site.vercel.app/stories`);
           if (!response.ok) {
             throw new Error('Failed to fetch stories.');
           }

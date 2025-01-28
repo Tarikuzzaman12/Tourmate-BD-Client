@@ -4,7 +4,7 @@ import PackageCard from '../Components/PackageCard';
 const Trips = () => {
     const [packages, setPackages] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/packages')
+        fetch('https://tour-mate-bd-server-site.vercel.app/packages')
           .then(res => res.json())
           .then(data => setPackages(data));
       }, []);

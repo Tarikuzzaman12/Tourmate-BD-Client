@@ -10,7 +10,7 @@ const Stories = () => {
 
   useEffect(() => {
     // Fetch all stories from the server
-    fetch("http://localhost:5000/stories")
+    fetch("https://tour-mate-bd-server-site.vercel.app/stories")
       .then((res) => res.json())
       .then((data) => setStories(data))
       .catch((err) => console.error("Error fetching stories:", err));
@@ -41,7 +41,7 @@ const Stories = () => {
             </div>
             <div className="px-6 py-4 flex justify-between items-center">
               <FacebookShareButton
-                url={`http://localhost:5000/stories/${story.id}`}
+                url={`https://tour-mate-bd-server-site.vercel.app/stories/${story.id}`}
                 quote={`Check out this story: ${story.storyTitle}`}
                 hashtag="#RandomStories"
                 onClick={() => handleShare(story)}

@@ -15,28 +15,28 @@ const AManageProfile = () => {
   const [guides, setGuides] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/stories")
+    fetch("https://tour-mate-bd-server-site.vercel.app/stories")
       .then((res) => res.json())
       .then((data) => setStories(data))
       .catch((err) => console.error("Error fetching stories:", err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://tour-mate-bd-server-site.vercel.app/users")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error("Error fetching users:", err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/packages")
+    fetch("https://tour-mate-bd-server-site.vercel.app/packages")
       .then((res) => res.json())
       .then((data) => setPackages(data))
       .catch((err) => console.error("Error fetching packages:", err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/guides")
+    fetch("https://tour-mate-bd-server-site.vercel.app/guides")
       .then((res) => res.json())
       .then((data) => setGuides(data))
       .catch((err) => console.error("Error fetching guides:", err));
@@ -48,7 +48,7 @@ const AManageProfile = () => {
         try {
           setLoading(true);
           const response = await fetch(
-            `http://localhost:5000/users/${user.email}`
+            `https://tour-mate-bd-server-site.vercel.app/users/${user.email}`
           );
           if (!response.ok) throw new Error("Failed to fetch user data");
           const data = await response.json();
@@ -72,7 +72,7 @@ const AManageProfile = () => {
   const handleSaveChanges = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/users/${user.email}`,
+        `https://tour-mate-bd-server-site.vercel.app/users/${user.email}`,
         {
           method: "PUT",
           headers: {
