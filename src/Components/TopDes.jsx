@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TopDes = () => {
   const destinations = [
@@ -6,19 +7,19 @@ const TopDes = () => {
       id: 1,
       name: 'Cox’s Bazar',
       description: 'The world’s longest sea beach with stunning views.',
-      image: 'https://i.ibb.co.com/4szZ8WC/Sundorban.jpg',
+      image: 'https://i.ibb.co.com/pd8ZmPD/longest-sea-beach-in.jpg',
     },
     {
       id: 2,
       name: 'Sundarbans',
       description: 'A UNESCO World Heritage Site and home of the Royal Bengal Tiger.',
-      image: 'https://i.ibb.co.com/4szZ8WC/Sundorban.jpg',
+      image: 'https://i.ibb.co.com/FD9KFZM/sundarban.jpg',
     },
     {
       id: 3,
       name: 'Bandarban',
       description: 'Breathtaking hills and waterfalls for nature lovers.',
-      image: 'https://i.ibb.co.com/4szZ8WC/Sundorban.jpg',
+      image: 'https://i.ibb.co.com/6yF6rM8/images.jpg',
     },
   ];
 
@@ -31,10 +32,10 @@ const TopDes = () => {
             <img src={dest.image} alt={dest.name} className="w-full h-48 object-cover" />
             <div className="p-4">
               <h3 className="text-lg font-bold">{dest.name}</h3>
-              <p className="text-gray-600">{dest.description}</p>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded mt-4">
+              <p className="text-gray-600 mb-5">{dest.description}</p>
+              <Link to="trips" className="bg-blue-600 text-white px-4  py-2 rounded ">
                 Plan Your Trip
-              </button>
+              </Link>
             </div>
           </div>
         ))}

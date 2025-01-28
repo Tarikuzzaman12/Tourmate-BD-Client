@@ -5,7 +5,7 @@ const PackageCard = ({ pkg }) => {
     return (
         <div className="card card-compact bg-base-100 w-96 shadow-xl">
             <figure>
-                <img
+                <img className='h-[256px] w-[384px]'
                     src={pkg.photo}
                     alt="Shoes" />
             </figure>

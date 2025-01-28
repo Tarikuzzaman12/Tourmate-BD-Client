@@ -3,25 +3,25 @@ import React from "react";
 const About = () => {
   const projects = [
     {
-      name: "TourMate BD",
-      description: "A modern tourism management system with dynamic features.",
-      link: "https://github.com/yourusername/tourmate-bd",
-    },
-    {
       name: "Lingo Bingo",
       description: "An interactive Italian vocabulary learning platform.",
-      link: "https://github.com/yourusername/lingo-bingo",
+      link: "https://encouraging-invention.surge.sh/",
     },
     {
-      name: "Peddy",
-      description: "A pet adoption platform with sorting and filtering features.",
-      link: "https://github.com/yourusername/peddy",
+      name: "Visa Compass",
+      description: "A comprehensive visa navigator portal with advanced filtering, authentication, and CRUD functionality.",
+      link: "https://visa-compass-pass-auth.web.app/",
+    },
+    {
+      name: "StayEase",
+      description: "A modern hotel booking platform with responsive design, user reviews, and filtering options.",
+      link: "https://stayease-pass-auth.web.app/",
     },
   ];
 
   return (
     <div className="container mx-auto my-8 p-4">
-      <h1 className="text-4xl font-bold mb-6">About Us</h1>
+      <h1 className="text-4xl font-bold text-center mb-6">About Us</h1>
       <div className="bg-white shadow-lg p-6 rounded-lg">
         <h2 className="text-2xl font-bold mb-4">About the Developer</h2>
         <p className="text-gray-700 mb-4">
@@ -54,7 +54,7 @@ const About = () => {
         <ul className="list-inside">
           <li>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Tarikuzzaman12"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline"
@@ -64,7 +64,7 @@ const About = () => {
           </li>
           <li>
             <a
-              href="https://www.linkedin.com/in/yourusername/"
+              href="https://www.linkedin.com/in/tarikuzzamantuhin/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline"

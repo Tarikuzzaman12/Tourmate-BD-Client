@@ -29,7 +29,7 @@ const RandomStories = () => {
 
   return (
     <div className="container mx-auto my-8 p-4">
-      <h2 className="text-2xl font-bold mb-4">Random Stories</h2>
+      <h2 className="text-2xl font-bold text-center mb-10">Random Stories</h2>
 
       {/* Display 4 random stories */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
