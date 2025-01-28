@@ -35,7 +35,7 @@ const TourismGuide = () => {
         {/* Packages Tab */}
         <TabPanel>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {packages.map(pkg => (
+            {packages?.map(pkg => (
               <PackageCard key={pkg._id} pkg={pkg} /> // Use PackageCard here
             ))}
           </div>
