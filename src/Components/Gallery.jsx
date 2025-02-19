@@ -1,8 +1,9 @@
 import React from 'react';
+import bandorban from "../assets/images/bandorban.jpg";
 
 const Gallery = () => {
   const images = [
-    { id: 1, src: '../assets/images/bandorban.jpg', title: 'Beach Sunset' },
+    { id: 1, src:bandorban, title: 'Beach Sunset' },
     { id: 2, src: '../assets/images/bandorban.jpg', title: 'Mountain Trails' },
     { id: 3, src: '../assets/images/bandorban.jpg', title: 'City Lights' },
     { id: 4, src: '../assets/images/bandorban.jpg', title: 'Waterfall Views' },
