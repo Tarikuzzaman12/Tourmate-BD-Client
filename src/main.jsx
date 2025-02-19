@@ -77,6 +77,10 @@ const router = createBrowserRouter([
         element: <Stories></Stories>,
       },
       {
+        path: "my-bookings",
+        element: <Booking></Booking>,
+      },
+      {
         path: "login",
         element: <Login></Login>,
       },

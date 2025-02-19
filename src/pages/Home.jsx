@@ -13,7 +13,6 @@ const Home = () => {
            <OverView></OverView>
            <TourismGuide></TourismGuide>
            <RandomStories></RandomStories>
-           <UserTable></UserTable>
            <TopDes></TopDes>
            <TourTip></TourTip>
         </div>

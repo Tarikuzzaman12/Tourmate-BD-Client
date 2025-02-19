@@ -1,30 +1,49 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const OverView = () => {
+const Overview = () => {
+  const features = [
+    "Secure User Authentication",
+    "Admin Dashboard for Management",
+    "Booking System",
+    "Integrated Payment Gateway",
+    "Role-Based Access Control",
+    "Responsive Design",
+    "Search and Filter Options",
+    "Real-Time Notifications",
+    "Interactive Animations",
+    "Pagination for Data Tables",
+  ];
+
   return (
-    <section className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-          Discover the Features of Our Website
-        </h2>
-        <p className="mt-4 text-lg text-gray-600">
-          Explore what makes our platform unique and user-friendly. Check out the overview below to learn more!
-        </p>
-      </div>
-
-      {/* Placeholder Section */}
-      <div className="mt-8 max-w-5xl mx-auto">
-        <div className="relative bg-gray-200 rounded-lg shadow-lg w-full h-64 flex items-center justify-center">
-          <p className="text-xl font-semibold text-gray-700">
-            Website Overview Coming Soon
+    <div className="bg-gray-100 p-6 rounded-lg shadow-md flex items-center justify-center h-screen">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold mb-4">Overview</h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-gray-700 mb-6">
+            Explore the key features of our web application, designed to enhance
+            user experience and ensure seamless functionality.
           </p>
-        </div>
+          <ul className="list-disc list-inside space-y-2 text-gray-800">
+            {features.map((feature, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                {feature}
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
       </div>
-
-    
-   
-    </section>
+    </div>
   );
 };
 
-export default OverView;
+export default Overview;
